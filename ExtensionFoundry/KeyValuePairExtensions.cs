@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ExtensionLib
+namespace ExtensionFoundry
 {
     /// <summary>
     /// Extensions for <see cref="KeyValuePair{TKey, TValue}"/>.

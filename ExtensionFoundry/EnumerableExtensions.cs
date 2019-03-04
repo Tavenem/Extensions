@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ExtensionLib
+namespace ExtensionFoundry
 {
     /// <summary>
     /// Extensions for <see cref="IEnumerable{T}"/>.
