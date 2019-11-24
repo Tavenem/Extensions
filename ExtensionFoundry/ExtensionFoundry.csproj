@@ -2,18 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>Preview</LangVersion>
-    <NullableConmtextOptions>enable</NullableConmtextOptions>
+    <LangVersion>Latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <CodeAnalysisRuleSet>../RoslynatorRuleSet.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Product>NeverFoundry.Extensions</Product>
+    <PackageId>NeverFoundry.Extensions</PackageId>
+    <Version>0.1.17</Version>
+    <Copyright>Copyright (c) 2019 Wil Stead</Copyright>
+    <RootNamespace>NeverFoundry</RootNamespace>
     <Authors>Wil Stead</Authors>
     <Description>A collection of useful extension methods.</Description>
-    <Version>0.1.11</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Product>ExtensionFoundry</Product>
-    <PackageId>ExtensionFoundry</PackageId>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\ExtensionLib.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard2.0\ExtensionFoundry.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>
