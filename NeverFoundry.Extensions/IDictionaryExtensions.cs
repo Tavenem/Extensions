@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace NeverFoundry
 {
@@ -40,7 +41,8 @@ namespace NeverFoundry
         /// <returns>
         /// The value associated with the specified key, or a default value if no such key exists.
         /// </returns>
-        public static TValue GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key) where TValue : struct
+        [return: MaybeNull]
+        public static TValue GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
         {
             if (dictionary.TryGetValue(key, out var value))
             {
@@ -70,20 +72,6 @@ namespace NeverFoundry
                 value = defaultValue;
             }
             return value;
-        }
-
-        /// <summary>
-        /// Deconstructs <see cref="KeyValuePair{TKey, TValue}"/>.
-        /// </summary>
-        /// <typeparam name="TKey">The type of key.</typeparam>
-        /// <typeparam name="TValue">The type of value.</typeparam>
-        /// <param name="keyValuePair">A <see cref="KeyValuePair{TKey, TValue}"/>.</param>
-        /// <param name="key">The key.</param>
-        /// <param name="value">The value.</param>
-        public static void Deconstruct<TKey, TValue>(this KeyValuePair<TKey, TValue> keyValuePair, out TKey key, out TValue value)
-        {
-            key = keyValuePair.Key;
-            value = keyValuePair.Value;
         }
     }
 }
