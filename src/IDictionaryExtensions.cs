@@ -1,34 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 
-namespace NeverFoundry
+namespace Tavenem
 {
     /// <summary>
     /// Extensions for <see cref="IDictionary{TKey, TValue}"/>.
     /// </summary>
     public static class IDictionaryExtensions
     {
-        /// <summary>
-        /// Gets the value associated with the specified key, or <see langword="null"/> if no such key
-        /// exists.
-        /// </summary>
-        /// <typeparam name="TKey">The type of keys in the dictionary.</typeparam>
-        /// <typeparam name="TValue">The type of values in the dictionary.</typeparam>
-        /// <param name="dictionary">An <see cref="IDictionary{TKey,TValue}"/> from which to
-        /// retrieve a value.</param>
-        /// <param name="key">The key to retrieve.</param>
-        /// <returns>
-        /// The value associated with the specified key, or a default value if no such key exists.
-        /// </returns>
-        public static TValue? GetValueOrNull<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key) where TValue : class
-        {
-            if (dictionary.TryGetValue(key, out var value))
-            {
-                return value;
-            }
-            return null;
-        }
-
         /// <summary>
         /// Gets the value associated with the specified key, or a default value if no such key
         /// exists.
@@ -41,15 +19,8 @@ namespace NeverFoundry
         /// <returns>
         /// The value associated with the specified key, or a default value if no such key exists.
         /// </returns>
-        [return: MaybeNull]
-        public static TValue GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
-        {
-            if (dictionary.TryGetValue(key, out var value))
-            {
-                return value;
-            }
-            return default;
-        }
+        public static TValue? GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
+            => dictionary.TryGetValue(key, out var value) ? value : default;
 
         /// <summary>
         /// Gets the value associated with the specified key, or a default value if no such key
@@ -65,13 +36,7 @@ namespace NeverFoundry
         /// The value associated with the specified key, or the specified default value if no such
         /// key exists.
         /// </returns>
-        public static TValue GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
-        {
-            if (!dictionary.TryGetValue(key, out var value))
-            {
-                value = defaultValue;
-            }
-            return value;
-        }
+        public static TValue? GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue? defaultValue)
+            => dictionary.TryGetValue(key, out var value) ? value : defaultValue;
     }
 }
