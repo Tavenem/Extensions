@@ -10,7 +10,7 @@
 
   <PropertyGroup>
     <PackageId>Tavenem.Extensions</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Wil Stead</Authors>
     <Description>A collection of useful extension methods used within the Tavenem family of projects and packages.</Description>
     <Copyright>Copyright (c) 2019-2021 Wil Stead</Copyright>
