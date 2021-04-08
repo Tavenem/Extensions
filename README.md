@@ -5,7 +5,7 @@ Tavenem.Extensions
 
 Tavenem.Extensions is a collection of useful extension methods used within the Tavenem family of projects and packages. Although its target audience is primarily internal (other Tavenem libraries), it is freely available to other developers who might find these extensions helpful.
 
-The library currently consists of extensions to the [IEnumerable\<T>](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1) and [IDictionary\<T>](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2) interfaces. There are a limited number of classes and each method is well-documented, so the best way to see what is currently included is to browse the source.
+The library currently consists of extensions to the [IEnumerable\<T>](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1) and [IDictionary\<T>](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2) interfaces, as well as a variety of extensions to the numeric types. There are a limited number of classes and each method is well-documented, so the best way to see what is currently included is to browse the source.
 
 ## Installation
 

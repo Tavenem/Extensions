@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0
+### Added
+- Add math extensions
+
 ## 1.0.4
 ### Fixed
 - Correct NuGet links
