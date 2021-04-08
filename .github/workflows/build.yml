@@ -17,9 +17,12 @@ jobs:
 
       - name: Install dependencies
         run: dotnet restore
+        working-directory: ./src
 
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build --configuration Debug --no-restore --nologo
+        working-directory: ./src
 
       #- name: Test
-      #  run: dotnet test --no-restore --verbosity normal
+      #  run: dotnet test --no-build --verbosity normal
+      #  working-directory: ./src
