@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0-preview.2
+### Changed
+- Pack README in NuGet
+
 ## 2.0.0-preview.1
 ### Added
 - `IComparableToZero<TSelf>` interface, which extends `IFloatingPoint<TSelf>` and defines a `NearlyZero` value
