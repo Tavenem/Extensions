@@ -18,7 +18,6 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Tavenem/Extensions</PackageProjectUrl>
     <PackageIcon>tavenem_128.png</PackageIcon>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>extensions</PackageTags>
     <RepositoryUrl>https://github.com/Tavenem/Extensions.git</RepositoryUrl>
     <RepositoryBranch>main</RepositoryBranch>
@@ -27,7 +26,6 @@
   
   <ItemGroup>
     <None Include="tavenem_128.png" Pack="true" PackagePath="\" />
-    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
