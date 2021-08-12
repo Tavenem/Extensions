@@ -21,5 +21,5 @@ public interface IComparableToZero<TSelf> : IFloatingPoint<TSelf> where TSelf : 
     /// results due to floating-point errors.
     /// </para>
     /// </remarks>
-    public TSelf NearlyZero { get; set; }
+    public TSelf NearlyZero { get; }
 }
