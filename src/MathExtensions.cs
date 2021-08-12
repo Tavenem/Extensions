@@ -351,7 +351,7 @@ public static class MathExtensions
     /// Uses <see cref="IComparableToZero{T}.NearlyZero"/> as the threshhold for closeness to zero.
     /// </remarks>
     public static bool IsNearlyZero<T>(this T value) where T : IComparableToZero<T>
-        => value < value.NearlyZero && value > (-value.NearlyZero);
+        => value < T.NearlyZero && value > (-T.NearlyZero);
 
     /// <summary>
     /// Determines if floating-point values are nearly equal, within a tolerance determined by
@@ -1441,5 +1441,5 @@ public static class MathExtensions
     /// The value whose equality-comparison epsilon should be calculated.
     /// </param>
     private static T GetEpsilon<T>(this T value) where T : IMultiplyOperators<T, T, T>, IComparableToZero<T>
-        => value * value.NearlyZero;
+        => value * T.NearlyZero;
 }
