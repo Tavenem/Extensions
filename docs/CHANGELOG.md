@@ -1,8 +1,8 @@
 # Changelog
 
-## 2.0.0-preview.2
+## 2.0.0-preview.3
 ### Changed
-- Remove required setter for `IComparableToZero<TSelf>.NearlyZero`
+- Make `IComparableToZero<TSelf>.NearlyZero` static
 
 ## 2.0.0-preview.1
 ### Added
