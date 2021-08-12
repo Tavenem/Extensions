@@ -34,4 +34,4 @@ Please ensure that all tests in any test projects (if present) pass before submi
 
 # Code of conduct
 
-Please read the [code of conduct](docs/CODE_OF_CONDUCT.md) before engaging with our community, including but not limited to submitting or replying to an issue or pull request.
+Please read the [code of conduct](CODE_OF_CONDUCT.md) before engaging with our community, including but not limited to submitting or replying to an issue or pull request.

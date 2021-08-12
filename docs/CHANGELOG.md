@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.0.0-preview.1
+### Added
+- `IComparableToZero<TSelf>` interface, which extends `IFloatingPoint<TSelf>` and defines a `NearlyZero` value
+which can be used in comparisons to avoid floating point errors
+### Changed
+- Update to .NET 6 preview
+- Update to C# 10 preview
+- Use generic math interfaces
+### Removed
+- Clamp overloads (now available with math interfaces)
+
 ## 1.1.0
 ### Added
 - Add math extensions

@@ -1,6 +1,6 @@
 name: publish
 env:
-  VERSION: '1.1.0'
+  VERSION: '2.0.0-preview.1'
   PRERELEASE: false
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           # Semantic version range syntax or exact version of a dotnet version
-          dotnet-version: '5.0.x'
+          dotnet-version: '6.0.x'
 
       - name: Install dependencies
         run: dotnet restore
