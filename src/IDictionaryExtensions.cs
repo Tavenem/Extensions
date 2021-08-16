@@ -1,9 +1,9 @@
-﻿namespace Tavenem;
+﻿namespace System.Collections.Generic;
 
 /// <summary>
 /// Extensions for <see cref="IDictionary{TKey, TValue}"/>.
 /// </summary>
-public static class IDictionaryExtensions
+public static class TavenemIDictionaryExtensions
 {
     /// <summary>
     /// Gets the value associated with the specified key, or a default value if no such key

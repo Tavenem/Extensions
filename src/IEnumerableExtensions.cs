@@ -1,9 +1,9 @@
-﻿namespace Tavenem;
+﻿namespace System.Linq;
 
 /// <summary>
 /// Extensions for <see cref="IEnumerable{T}"/>.
 /// </summary>
-public static class IEnumerableExtensions
+public static class TavenemIEnumerableExtensions
 {
     /// <summary>
     /// Returns the first element of the sequence or <see langword="null"/> if the sequence is empty.
@@ -46,7 +46,8 @@ public static class IEnumerableExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> or <paramref name="predicate"/> is <see langword="null"/>.
     /// </exception>
-    public static TSource? FirstOrNull<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) where TSource : struct
+    public static TSource? FirstOrNull<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
+        where TSource : struct
     {
         if (source is null)
         {
@@ -111,170 +112,6 @@ public static class IEnumerableExtensions
     /// </summary>
     /// <typeparam name="TSource">The type of the elements of <paramref
     /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static int IndexOfMax<TSource>(this IEnumerable<TSource> source, Func<TSource, int> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1;
-        var maxIndex = -1;
-        var max = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value > max)
-            {
-                max = value;
-                maxIndex = index;
-            }
-        }
-        return maxIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the maximum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static int IndexOfMax<TSource>(this IEnumerable<TSource> source, Func<TSource, long> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1;
-        var maxIndex = -1;
-        var max = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value > max)
-            {
-                max = value;
-                maxIndex = index;
-            }
-        }
-        return maxIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the maximum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static int IndexOfMax<TSource>(this IEnumerable<TSource> source, Func<TSource, float> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1;
-        var maxIndex = -1;
-        var max = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value > max)
-            {
-                max = value;
-                maxIndex = index;
-            }
-        }
-        return maxIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the maximum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static int IndexOfMax<TSource>(this IEnumerable<TSource> source, Func<TSource, double> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1;
-        var maxIndex = -1;
-        var max = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value > max)
-            {
-                max = value;
-                maxIndex = index;
-            }
-        }
-        return maxIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the maximum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
     /// <typeparam name="TValue">The type of value to compare.</typeparam>
     /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
     /// <param name="selector">A function which selects a value from each element.</param>
@@ -282,7 +119,8 @@ public static class IEnumerableExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> is <see langword="null"/>.
     /// </exception>
-    public static int IndexOfMax<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector) where TValue : IComparable<TValue>
+    public static int IndexOfMax<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector)
+        where TValue : IComparable<TValue>
     {
         if (source is null)
         {
@@ -400,170 +238,6 @@ public static class IEnumerableExtensions
     /// </summary>
     /// <typeparam name="TSource">The type of the elements of <paramref
     /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static long LongIndexOfMax<TSource>(this IEnumerable<TSource> source, Func<TSource, int> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1L;
-        var maxIndex = -1L;
-        var max = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value > max)
-            {
-                max = value;
-                maxIndex = index;
-            }
-        }
-        return maxIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the maximum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static long LongIndexOfMax<TSource>(this IEnumerable<TSource> source, Func<TSource, long> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1L;
-        var maxIndex = -1L;
-        var max = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value > max)
-            {
-                max = value;
-                maxIndex = index;
-            }
-        }
-        return maxIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the maximum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static long LongIndexOfMax<TSource>(this IEnumerable<TSource> source, Func<TSource, float> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1L;
-        var maxIndex = -1L;
-        var max = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value > max)
-            {
-                max = value;
-                maxIndex = index;
-            }
-        }
-        return maxIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the maximum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static long LongIndexOfMax<TSource>(this IEnumerable<TSource> source, Func<TSource, double> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1L;
-        var maxIndex = -1L;
-        var max = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value > max)
-            {
-                max = value;
-                maxIndex = index;
-            }
-        }
-        return maxIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the maximum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
     /// <typeparam name="TValue">The type of value to compare.</typeparam>
     /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
     /// <param name="selector">A function which selects a value from each element.</param>
@@ -571,7 +245,8 @@ public static class IEnumerableExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> is <see langword="null"/>.
     /// </exception>
-    public static long LongIndexOfMax<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector) where TValue : IComparable<TValue>
+    public static long LongIndexOfMax<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector)
+        where TValue : IComparable<TValue>
     {
         if (source is null)
         {
@@ -689,170 +364,6 @@ public static class IEnumerableExtensions
     /// </summary>
     /// <typeparam name="TSource">The type of the elements of <paramref
     /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static int IndexOfMin<TSource>(this IEnumerable<TSource> source, Func<TSource, int> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1;
-        var minIndex = -1;
-        var min = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value < min)
-            {
-                min = value;
-                minIndex = index;
-            }
-        }
-        return minIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the minimum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static int IndexOfMin<TSource>(this IEnumerable<TSource> source, Func<TSource, long> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1;
-        var minIndex = -1;
-        var min = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value < min)
-            {
-                min = value;
-                minIndex = index;
-            }
-        }
-        return minIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the minimum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static int IndexOfMin<TSource>(this IEnumerable<TSource> source, Func<TSource, float> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1;
-        var minIndex = -1;
-        var min = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value < min)
-            {
-                min = value;
-                minIndex = index;
-            }
-        }
-        return minIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the minimum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static int IndexOfMin<TSource>(this IEnumerable<TSource> source, Func<TSource, double> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1;
-        var minIndex = -1;
-        var min = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value < min)
-            {
-                min = value;
-                minIndex = index;
-            }
-        }
-        return minIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the minimum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
     /// <typeparam name="TValue">The type of value to compare.</typeparam>
     /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
     /// <param name="selector">A function which selects a value from each element.</param>
@@ -860,7 +371,8 @@ public static class IEnumerableExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> is <see langword="null"/>.
     /// </exception>
-    public static int IndexOfMin<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector) where TValue : IComparable<TValue>
+    public static int IndexOfMin<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector)
+        where TValue : IComparable<TValue>
     {
         if (source is null)
         {
@@ -978,178 +490,15 @@ public static class IEnumerableExtensions
     /// </summary>
     /// <typeparam name="TSource">The type of the elements of <paramref
     /// name="source"/>.</typeparam>
+    /// <typeparam name="TValue">The type of value to compare.</typeparam>
     /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
     /// <param name="selector">A function which selects a value from each element.</param>
     /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> is <see langword="null"/>.
     /// </exception>
-    public static long LongIndexOfMin<TSource>(this IEnumerable<TSource> source, Func<TSource, int> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1L;
-        var minIndex = -1L;
-        var min = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value < min)
-            {
-                min = value;
-                minIndex = index;
-            }
-        }
-        return minIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the minimum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static long LongIndexOfMin<TSource>(this IEnumerable<TSource> source, Func<TSource, long> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1L;
-        var minIndex = -1L;
-        var min = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value < min)
-            {
-                min = value;
-                minIndex = index;
-            }
-        }
-        return minIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the minimum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static long LongIndexOfMin<TSource>(this IEnumerable<TSource> source, Func<TSource, float> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1L;
-        var minIndex = -1L;
-        var min = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value < min)
-            {
-                min = value;
-                minIndex = index;
-            }
-        }
-        return minIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the minimum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static long LongIndexOfMin<TSource>(this IEnumerable<TSource> source, Func<TSource, double> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        if (!source.Any())
-        {
-            return -1;
-        }
-
-        var index = -1L;
-        var minIndex = -1L;
-        var min = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value < min)
-            {
-                min = value;
-                minIndex = index;
-            }
-        }
-        return minIndex;
-    }
-
-    /// <summary>
-    /// Finds the index of the first occurrence of the minimum value of a sequence, or -1 if the
-    /// sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <typeparam name="U">The type of value to compare.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The index of the first occurrence of the maximum value of the sequence.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static long LongIndexOfMin<TSource, U>(this IEnumerable<TSource> source, Func<TSource, U> selector) where U : IComparable<U>
+    public static long LongIndexOfMin<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector)
+        where TValue : IComparable<TValue>
     {
         if (source is null)
         {
@@ -1228,178 +577,6 @@ public static class IEnumerableExtensions
     /// </summary>
     /// <typeparam name="TSource">The type of the elements of <paramref
     /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The first element in the sequence with the maximum value for <paramref
-    /// name="selector"/>.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static TSource? ItemWithMax<TSource>(this IEnumerable<TSource> source, Func<TSource, int> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        TSource? maxItem = default;
-
-        if (!source.Any())
-        {
-            return maxItem;
-        }
-
-        var index = -1;
-        var max = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value > max)
-            {
-                max = value;
-                maxItem = enumerator.Current;
-            }
-        }
-        return maxItem;
-    }
-
-    /// <summary>
-    /// Finds the first element for whom the given function produces the maximum value, or the
-    /// default value of <typeparamref name="TSource"/> if the sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The first element in the sequence with the maximum value for <paramref
-    /// name="selector"/>.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static TSource? ItemWithMax<TSource>(this IEnumerable<TSource> source, Func<TSource, long> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        TSource? maxItem = default;
-
-        if (!source.Any())
-        {
-            return maxItem;
-        }
-
-        var index = -1;
-        var max = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value > max)
-            {
-                max = value;
-                maxItem = enumerator.Current;
-            }
-        }
-        return maxItem;
-    }
-
-    /// <summary>
-    /// Finds the first element for whom the given function produces the maximum value, or the
-    /// default value of <typeparamref name="TSource"/> if the sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The first element in the sequence with the maximum value for <paramref
-    /// name="selector"/>.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static TSource? ItemWithMax<TSource>(this IEnumerable<TSource> source, Func<TSource, float> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        TSource? maxItem = default;
-
-        if (!source.Any())
-        {
-            return maxItem;
-        }
-
-        var index = -1;
-        var max = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value > max)
-            {
-                max = value;
-                maxItem = enumerator.Current;
-            }
-        }
-        return maxItem;
-    }
-
-    /// <summary>
-    /// Finds the first element for whom the given function produces the maximum value, or the
-    /// default value of <typeparamref name="TSource"/> if the sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The first element in the sequence with the maximum value for <paramref
-    /// name="selector"/>.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static TSource? ItemWithMax<TSource>(this IEnumerable<TSource> source, Func<TSource, double> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        TSource? maxItem = default;
-
-        if (!source.Any())
-        {
-            return maxItem;
-        }
-
-        var index = -1;
-        var max = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value > max)
-            {
-                max = value;
-                maxItem = enumerator.Current;
-            }
-        }
-        return maxItem;
-    }
-
-    /// <summary>
-    /// Finds the first element for whom the given function produces the maximum value, or the
-    /// default value of <typeparamref name="TSource"/> if the sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
     /// <typeparam name="TValue">The type of value to compare.</typeparam>
     /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
     /// <param name="selector">A function which selects a value from each element.</param>
@@ -1408,7 +585,8 @@ public static class IEnumerableExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> is <see langword="null"/>.
     /// </exception>
-    public static TSource? ItemWithMax<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector) where TValue : IComparable<TValue>
+    public static TSource? ItemWithMax<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector)
+        where TValue : IComparable<TValue>
     {
         if (source is null)
         {
@@ -1439,175 +617,46 @@ public static class IEnumerableExtensions
     }
 
     /// <summary>
-    /// Finds the first element for whom the given function produces the minimum value, or the
-    /// default value of <typeparamref name="TSource"/> if the sequence is empty.
+    /// Finds the maximum element, or the default value of <typeparamref name="TSource"/> if the sequence is empty.
     /// </summary>
     /// <typeparam name="TSource">The type of the elements of <paramref
     /// name="source"/>.</typeparam>
+    /// <typeparam name="TValue">The type of value to compare.</typeparam>
     /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The first element in the sequence with the minimum value for <paramref
-    /// name="selector"/>.</returns>
+    /// <param name="comparer">A comparer used to compare instances of the sequence.</param>
+    /// <returns>The first element in the sequence with the maximum value.</returns>
     /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
+    /// <paramref name="source"/> or <paramref name="comparer"/> is <see langword="null"/>.
     /// </exception>
-    public static TSource? ItemWithMin<TSource>(this IEnumerable<TSource> source, Func<TSource, int> selector)
+    public static TSource? ItemWithMax<TSource, TValue>(this IEnumerable<TSource> source, IComparer<TSource> comparer)
+        where TValue : IComparable<TValue>
     {
         if (source is null)
         {
             throw new ArgumentNullException(nameof(source));
         }
-
-        TSource? minItem = default;
+        if (comparer is null)
+        {
+            throw new ArgumentNullException(nameof(comparer));
+        }
 
         if (!source.Any())
         {
-            return minItem;
+            return default;
         }
 
         var index = -1;
-        var min = selector.Invoke(source.First());
+        var max = source.First();
         var enumerator = source.GetEnumerator();
         while (enumerator.MoveNext())
         {
             index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value < min)
+            if (comparer.Compare(enumerator.Current, max) > 0)
             {
-                min = value;
-                minItem = enumerator.Current;
+                max = enumerator.Current;
             }
         }
-        return minItem;
-    }
-
-    /// <summary>
-    /// Finds the first element for whom the given function produces the minimum value, or the
-    /// default value of <typeparamref name="TSource"/> if the sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The first element in the sequence with the minimum value for <paramref
-    /// name="selector"/>.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static TSource? ItemWithMin<TSource>(this IEnumerable<TSource> source, Func<TSource, long> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        TSource? minItem = default;
-
-        if (!source.Any())
-        {
-            return minItem;
-        }
-
-        var index = -1;
-        var min = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value < min)
-            {
-                min = value;
-                minItem = enumerator.Current;
-            }
-        }
-        return minItem;
-    }
-
-    /// <summary>
-    /// Finds the first element for whom the given function produces the minimum value, or the
-    /// default value of <typeparamref name="TSource"/> if the sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The first element in the sequence with the minimum value for <paramref
-    /// name="selector"/>.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static TSource? ItemWithMin<TSource>(this IEnumerable<TSource> source, Func<TSource, float> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        TSource? minItem = default;
-
-        if (!source.Any())
-        {
-            return minItem;
-        }
-
-        var index = -1;
-        var min = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value < min)
-            {
-                min = value;
-                minItem = enumerator.Current;
-            }
-        }
-        return minItem;
-    }
-
-    /// <summary>
-    /// Finds the first element for whom the given function produces the minimum value, or the
-    /// default value of <typeparamref name="TSource"/> if the sequence is empty.
-    /// </summary>
-    /// <typeparam name="TSource">The type of the elements of <paramref
-    /// name="source"/>.</typeparam>
-    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
-    /// <param name="selector">A function which selects a value from each element.</param>
-    /// <returns>The first element in the sequence with the minimum value for <paramref
-    /// name="selector"/>.</returns>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="source"/> is <see langword="null"/>.
-    /// </exception>
-    public static TSource? ItemWithMin<TSource>(this IEnumerable<TSource> source, Func<TSource, double> selector)
-    {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-
-        TSource? minItem = default;
-
-        if (!source.Any())
-        {
-            return minItem;
-        }
-
-        var index = -1;
-        var min = selector.Invoke(source.First());
-        var enumerator = source.GetEnumerator();
-        while (enumerator.MoveNext())
-        {
-            index++;
-            var value = selector.Invoke(enumerator.Current);
-            if (value < min)
-            {
-                min = value;
-                minItem = enumerator.Current;
-            }
-        }
-        return minItem;
+        return max;
     }
 
     /// <summary>
@@ -1624,7 +673,8 @@ public static class IEnumerableExtensions
     /// <exception cref="ArgumentNullException">
     /// <paramref name="source"/> is <see langword="null"/>.
     /// </exception>
-    public static TSource? ItemWithMin<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector) where TValue : IComparable<TValue>
+    public static TSource? ItemWithMin<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector)
+        where TValue : IComparable<TValue>
     {
         if (source is null)
         {
@@ -1653,6 +703,62 @@ public static class IEnumerableExtensions
         }
         return minItem;
     }
+
+    /// <summary>
+    /// Finds the minimum element, or the default value of <typeparamref name="TSource"/> if the sequence is empty.
+    /// </summary>
+    /// <typeparam name="TSource">The type of the elements of <paramref
+    /// name="source"/>.</typeparam>
+    /// <typeparam name="TValue">The type of value to compare.</typeparam>
+    /// <param name="source">An <see cref="IEnumerable{T}"/> to return an element from.</param>
+    /// <param name="comparer">A comparer used to compare instances of the sequence.</param>
+    /// <returns>The first element in the sequence with the minimum value.</returns>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="source"/> or <paramref name="comparer"/> is <see langword="null"/>.
+    /// </exception>
+    public static TSource? ItemWithMin<TSource, TValue>(this IEnumerable<TSource> source, IComparer<TSource> comparer)
+        where TValue : IComparable<TValue>
+    {
+        if (source is null)
+        {
+            throw new ArgumentNullException(nameof(source));
+        }
+
+        if (!source.Any())
+        {
+            return default;
+        }
+
+        var index = -1;
+        var min = source.First();
+        var enumerator = source.GetEnumerator();
+        while (enumerator.MoveNext())
+        {
+            index++;
+            if (comparer.Compare(enumerator.Current, min) < 0)
+            {
+                min = enumerator.Current;
+            }
+        }
+        return min;
+    }
+
+    /// <summary>
+    /// Selects elements of a sequence, omitting <see langword="null"/>
+    /// results and returning the values in non-nullable form.
+    /// </summary>
+    /// <typeparam name="TSource">The type of the elements of <paramref
+    /// name="source"/>.</typeparam>
+    /// <param name="source">A sequence of values.</param>
+    /// <returns>
+    /// An <see cref="IEnumerable{T}"/> whose elements are non-nullable
+    /// elements from <paramref name="source"/>.
+    /// </returns>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="source"/> is <see langword="null"/>.
+    /// </exception>
+    public static IEnumerable<TSource> SelectHasValue<TSource>(this IEnumerable<TSource?> source) where TSource : struct
+        => source.Where(x => x.HasValue).Select(x => x!.Value);
 
     /// <summary>
     /// Projects each element of a sequence into a new form, omitting <see langword="null"/>
@@ -1765,6 +871,21 @@ public static class IEnumerableExtensions
     /// name="selector"/> is <see langword="null"/>.</exception>
     public static IEnumerable<TResult> SelectManyNonNull<TSource, TResult>(this IEnumerable<TSource?> source, Func<TSource?, int, IEnumerable<TResult>> selector)
         => source.SelectMany(selector).Where(x => x is not null);
+
+    /// <summary>
+    /// Selects elements of a sequence, omitting <see langword="null"/> results.
+    /// </summary>
+    /// <typeparam name="TSource">The type of the elements of <paramref
+    /// name="source"/>.</typeparam>
+    /// <param name="source">A sequence of values.</param>
+    /// <returns>
+    /// An <see cref="IEnumerable{T}"/> whose elements are the non-null elements of <paramref name="source"/>.
+    /// </returns>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="source"/> is <see langword="null"/>.
+    /// </exception>
+    public static IEnumerable<TSource> SelectNonNull<TSource>(this IEnumerable<TSource?> source)
+        => source.Where(x => x is not null).Cast<TSource>();
 
     /// <summary>
     /// Projects each element of a sequence into a new form, omitting <see langword="null"/>
