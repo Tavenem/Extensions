@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0-preview.5
+### Removed
+- MathExtensions (moved to Tavenem.Mathematics library)
+
 ## 2.0.0-preview.4
 ### Added
 - `SelectHasValue` and `SelectNonNull` overloads without selector expressions, which operate on the sequence itself
