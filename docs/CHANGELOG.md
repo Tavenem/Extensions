@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0-preview.6
+### Removed
+- `ItemWithMax` and `ItemWithMin` (replaced with .NET 6 `MaxBy` and `MinBy`)
+
 ## 2.0.0-preview.5
 ### Removed
 - MathExtensions (moved to Tavenem.Mathematics library)
