@@ -13,7 +13,7 @@ Tavenem.Extensions is available as a [NuGet package](https://www.nuget.org/packa
 
 ## Roadmap
 
-Tavenem.Extensions is a relatively stable helper library which sees minimal development. Although additions and bugfixes are always possible, no specific updates are planned at this time.
+Tavenem.Extensions's latest preview release targets .NET 7, which is also in preview. When a stable release of .NET 7 is published, a new stable release of Tavenem.Extensions will follow shortly.
 
 ## Contributing
 
