@@ -1,8 +1,12 @@
 # Changelog
 
-## 2.1.0-preview.1
+## 2.1.0
 ### Updated
 - Update to .NET 7
+
+## 2.1.0-preview.1
+### Updated
+- Update to .NET 7 RC
 - Remove dependency on preview features
 ### Removed
 - `IComparableToZero`
