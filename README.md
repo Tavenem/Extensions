@@ -1,4 +1,4 @@
-![build](https://img.shields.io/github/workflow/status/Tavenem/Extensions/publish/main) [![NuGet downloads](https://img.shields.io/nuget/dt/Tavenem.Extensions)](https://www.nuget.org/packages/Tavenem.Extensions/)
+![build](https://img.shields.io/github/actions/workflow/status/Tavenem/Extensions/publish.yml?branch=main) [![NuGet downloads](https://img.shields.io/nuget/dt/Tavenem.Extensions)](https://www.nuget.org/packages/Tavenem.Extensions/)
 
 Tavenem.Extensions
 ==
