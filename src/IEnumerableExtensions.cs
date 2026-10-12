@@ -1,4 +1,6 @@
-﻿namespace System.Linq;
+﻿#pragma warning disable IDE0130 // Namespace does not match folder structure: using System.Linq to match the type being extended
+namespace System.Linq;
+#pragma warning restore IDE0130 // Namespace does not match folder structure
 
 /// <summary>
 /// Extensions for <see cref="IEnumerable{T}"/>.
@@ -18,10 +20,7 @@ public static class TavenemIEnumerableExtensions
     /// </exception>
     public static TSource? FirstOrNull<TSource>(this IEnumerable<TSource> source) where TSource : struct
     {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
+        ArgumentNullException.ThrowIfNull(source);
         if (source.Any())
         {
             return source.First();
@@ -49,14 +48,8 @@ public static class TavenemIEnumerableExtensions
     public static TSource? FirstOrNull<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate)
         where TSource : struct
     {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-        if (predicate is null)
-        {
-            throw new ArgumentNullException(nameof(predicate));
-        }
+        ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(predicate);
         foreach (var item in source)
         {
             if (predicate(item))
@@ -80,10 +73,7 @@ public static class TavenemIEnumerableExtensions
     /// </exception>
     public static int IndexOfMax<TSource>(this IEnumerable<TSource> source) where TSource : IComparable
     {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
+        ArgumentNullException.ThrowIfNull(source);
 
         if (!source.Any())
         {
@@ -122,10 +112,7 @@ public static class TavenemIEnumerableExtensions
     public static int IndexOfMax<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector)
         where TValue : IComparable<TValue>
     {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
+        ArgumentNullException.ThrowIfNull(source);
 
         if (!source.Any())
         {
@@ -163,14 +150,8 @@ public static class TavenemIEnumerableExtensions
     /// </exception>
     public static int IndexOfMax<TSource>(this IEnumerable<TSource> source, IComparer<TSource> comparer)
     {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-        if (comparer is null)
-        {
-            throw new ArgumentNullException(nameof(comparer));
-        }
+        ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(comparer);
 
         if (!source.Any())
         {
@@ -206,10 +187,7 @@ public static class TavenemIEnumerableExtensions
     /// </exception>
     public static long LongIndexOfMax<TSource>(this IEnumerable<TSource> source) where TSource : IComparable
     {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
+        ArgumentNullException.ThrowIfNull(source);
 
         if (!source.Any())
         {
@@ -248,10 +226,7 @@ public static class TavenemIEnumerableExtensions
     public static long LongIndexOfMax<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector)
         where TValue : IComparable<TValue>
     {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
+        ArgumentNullException.ThrowIfNull(source);
 
         if (!source.Any())
         {
@@ -289,14 +264,8 @@ public static class TavenemIEnumerableExtensions
     /// </exception>
     public static long LongIndexOfMax<TSource>(this IEnumerable<TSource> source, IComparer<TSource> comparer)
     {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-        if (comparer is null)
-        {
-            throw new ArgumentNullException(nameof(comparer));
-        }
+        ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(comparer);
 
         if (!source.Any())
         {
@@ -332,10 +301,7 @@ public static class TavenemIEnumerableExtensions
     /// </exception>
     public static int IndexOfMin<TSource>(this IEnumerable<TSource> source) where TSource : IComparable
     {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
+        ArgumentNullException.ThrowIfNull(source);
 
         if (!source.Any())
         {
@@ -374,10 +340,7 @@ public static class TavenemIEnumerableExtensions
     public static int IndexOfMin<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector)
         where TValue : IComparable<TValue>
     {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
+        ArgumentNullException.ThrowIfNull(source);
 
         if (!source.Any())
         {
@@ -415,14 +378,8 @@ public static class TavenemIEnumerableExtensions
     /// </exception>
     public static int IndexOfMin<TSource>(this IEnumerable<TSource> source, IComparer<TSource> comparer)
     {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-        if (comparer is null)
-        {
-            throw new ArgumentNullException(nameof(comparer));
-        }
+        ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(comparer);
 
         if (!source.Any())
         {
@@ -458,10 +415,7 @@ public static class TavenemIEnumerableExtensions
     /// </exception>
     public static long LongIndexOfMin<TSource>(this IEnumerable<TSource> source) where TSource : IComparable
     {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
+        ArgumentNullException.ThrowIfNull(source);
 
         if (!source.Any())
         {
@@ -500,10 +454,7 @@ public static class TavenemIEnumerableExtensions
     public static long LongIndexOfMin<TSource, TValue>(this IEnumerable<TSource> source, Func<TSource, TValue> selector)
         where TValue : IComparable<TValue>
     {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
+        ArgumentNullException.ThrowIfNull(source);
 
         if (!source.Any())
         {
@@ -541,14 +492,8 @@ public static class TavenemIEnumerableExtensions
     /// </exception>
     public static long LongIndexOfMin<TSource>(this IEnumerable<TSource> source, IComparer<TSource> comparer)
     {
-        if (source is null)
-        {
-            throw new ArgumentNullException(nameof(source));
-        }
-        if (comparer is null)
-        {
-            throw new ArgumentNullException(nameof(comparer));
-        }
+        ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(comparer);
 
         if (!source.Any())
         {
