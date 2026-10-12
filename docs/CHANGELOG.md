@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1
+### Updated
+- Restored .NET 8 support
+
 ## 3.0.0
 ### Updated
 - Update to .NET 10
